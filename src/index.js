@@ -1,0 +1,48 @@
+import $ from "jquery";
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./css/styles.css";
+import Rectangle from "./../src/js/rectangle.js";
+
+
+$(document).ready(function () {
+  $("#triangle-checker-form").submit(function (event) {
+    event.preventDefault();
+    const length1 = $("#length1").val();
+    const length2 = $("#length2").val();
+    const length3 = $("#length3").val();
+    const length4 = $("#length4").val();
+    const rectangle = new Rectangle(length1, length2, length3, length4);
+    function showResult() {
+      if (!rectangle.ifRectangle(length1, length2, length3, length4)){
+        return "not a rectangle";
+      } else {
+        let result = rectangle.checkType(length1, length2, length3, length4);
+        return result;
+      }
+    }
+    
+  let response = showResult(rectangle);
+  $("#response").append("<p>" + response + "</p>");
+
+});
+});
+
+// import $ from "jquery";
+// import "bootstrap";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "./css/styles.css";
+// import Rectangle from "./../src/js/rectangle.js";
+
+// $(document).ready(function () {
+//   $("#triangle-checker-form").submit(function (event) {
+//     event.preventDefault();
+//     const length1 = $("#length1").val();
+//     const length2 = $("#length2").val();
+//     const length3 = $("#length3").val();
+//     const length4 = $("#length4").val();
+//     const rectangle = new Rectangle(length1, length2, length3, length4);
+//     const response = rectangle.checkType(length1, length2, length3, length4);
+//     $("#response").append("<p>" + response + "</p>");
+//   });
+// });
